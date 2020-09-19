@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/** Program that takes care of IO and error handling 
+ * for the border, brighten, and blur programs
+ * @author Rohan Sukhija
+ */
 
 void checkType()
 {
@@ -33,33 +37,39 @@ void checkRange()
 
 void readPixels( int height, int width, unsigned char pix[ height ][ width ][ DEPTH ] )
 {
-    int pixelCount = height * width * DEPTH; 
-    int actualCount = 0;
+    
     for(int i = 0; i < height ;i++){
         for(int j = 0; j < width ; j++){
             for(int k = 0; k < DEPTH ; k++){
                 int num = 0; 
                 scanf("%d", &num);
+                if(num < 0 || num > 255){
+                    exit(BAD_PIXEL);
+                }
                 pix[i][j][k] = num;
-                actualCount++;
             }
         }
     }
-    if(pixelCount != actualCount){
+    int i; 
+    if(scanf("%d", &i) != EOF){
         exit(BAD_PIXEL);
     }
 
 }
 
 void writeImage( int height, int width, unsigned char pix[ height ][ width ][ DEPTH ] ){
-    printf("P3\n%d %d\n%d", height, width, STD_RANGE);
+    printf("P3\n%d %d\n%d\n", width, height, STD_RANGE);
     for(int i = 0; i < height ;i++){
-        printf("\n");
         for(int j = 0; j < width ; j++){
             for(int k = 0; k < DEPTH ; k++){
-               int num = pix[i][j][k];
-               printf("%3d ",num);
+               int num = (int) pix[i][j][k];
+               if(j == 0 && k==0){
+                   printf("%d",num);
+               } else {
+                    printf(" %d",num);
+               }
             }
         }
+        printf("\n");
     }
 }

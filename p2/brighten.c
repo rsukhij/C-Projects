@@ -1,12 +1,24 @@
-
 #include "image.h"
 #include <stdlib.h>
 
+/**
+ * Brightens PPM pixel data input by adding 25 
+ * to each RGB value up to 255. Outputs brightened 
+ * image to PPM file
+ * @author Rohan Sukhija
+ */ 
+
+/**
+ * Brightens PPM pixel data input by adding 25 
+ * to each RGB value up to 255. Outputs brightened 
+ * image to PPM file
+ * @return 0 if program finishes successfully
+ */
 int main() 
 {
     checkType();
-    int height = readDimension();
     int width = readDimension();
+    int height = readDimension();
     checkRange();
     unsigned char pixels[height][width][DEPTH];
     readPixels(height, width, pixels);
