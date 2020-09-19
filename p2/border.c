@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "image.h"
 /**
- * Program that processes PPM pixel data to 
+ * Program that processes PPM pixel data to
  * create and output a new PPM file with a
  * 4 pixel black border
  * @author Rohan Sukhija
@@ -12,7 +12,7 @@
 #define PADDING 4
 
 /**
- * Process PPM pixel data to output a new PPM file 
+ * Process PPM pixel data to output a new PPM file
  * with a 4 pixel black border
  * @return 0 if program finishes successfully
  */
@@ -40,6 +40,6 @@ int main()
             }
         }
     }
-    writeImage(height + PADDING + PADDING, width + PADDING + PADDING , newpixels);
+    writeImage(height + PADDING + PADDING, width + PADDING + PADDING, newpixels);
     return 0;
 }

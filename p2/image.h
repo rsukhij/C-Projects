@@ -31,7 +31,7 @@ void checkRange();
  */
 void readPixels( int height, int width, unsigned char pix[ height ][ width ][ DEPTH ] );
 
-/** Writes the pixel array's content into a new formatted PPM file 
+/** Writes the pixel array's content into a new formatted PPM file
  * @param height the height of the image in pixels
  * @param width the width of the image in pixels
  * @param pix the array being outputted

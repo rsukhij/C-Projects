@@ -13,15 +13,15 @@
 /** The weightage(out of 16) of a Gaussian blur center pixel */
 #define CENTER 4
 
-/** Checks if a particular array element is within the bounds 
- *  of the array. 
+/** Checks if a particular array element is within the bounds
+ *  of the array.
  * @param num the particular element in the array
  * @param height the height of the array
  * @param width the width of the array
  * @param i the index of the row of the element
  * @param j the index of the column of the element
- * @return num if the element is within bounds, -1 
- * if not. 
+ * @return num if the element is within bounds, -1
+ * if not.
  */
 int bound(int num, int height, int width, int i, int j)
 {
