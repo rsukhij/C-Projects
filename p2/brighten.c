@@ -16,7 +16,7 @@
  * image to PPM file
  * @return 0 if program finishes successfully
  */
-int main() 
+int main()
 {
     checkType();
     int width = readDimension();
