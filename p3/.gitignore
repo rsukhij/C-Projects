@@ -1,3 +1,6 @@
 chop
 stdout.txt
 stderr.txt
+output.txt
+*.o
+-
