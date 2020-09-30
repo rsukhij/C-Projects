@@ -32,20 +32,20 @@ int main(int argc, char *argv[])
 {
     if (argc < MIN_ARG)
     {
-        fprintf(stderr, "%s", "invalid arguments\n");
+        printInvalidArg();
     }
     FILE *inputFile = fopen(argv[argc - 2], "r");
-    if (inputFile == NULL)
-    {
-        fprintf(stderr, "Can't open file: %s\n", argv[argc - 2]);
-        exit(1);
-    }
     if (strcmp(argv[argc - 2], "-") == 0)
     {
         readFile(stdin);
     }
     else
     {
+        if (inputFile == NULL)
+        {
+            fprintf(stderr, "Can't open file: %s\n", argv[argc - 2]);
+            exit(1);
+        }
         readFile(inputFile);
     }
 
