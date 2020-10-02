@@ -67,8 +67,8 @@ int main(int argc, char *argv[]) {
             exit(1);
         }
         readFile(inputFile);
+        fclose(inputFile);
     }
-    fclose(inputFile);
     for (int i = 1; i < argc - MIN_ARG + 1; i++) {
         if (strcmp("line", argv[i]) == 0) {
             int line = atoi(argv[++i]);
@@ -117,7 +117,7 @@ int main(int argc, char *argv[]) {
     }
     else {
         writeFile(outputFile);
+        fclose(outputFile);
     }
-    fclose(outputFile);
     return 0;
 }
