@@ -1,7 +1,7 @@
 /**
- * Program that takes commandline arguments 
+ * Program that takes commandline arguments
  * to modify a textfile by selectively removing
- * lines and columns 
+ * lines and columns
  * @author Rohan Sukhija
  */
 
@@ -57,19 +57,19 @@ int main(int argc, char *argv[]) {
     if (argc < MIN_ARG) {
         printInvalidArg();
     }
-    FILE *inputFile = fopen(argv[argc - 2], "r");
-    if (strcmp(argv[argc - 2], "-") == 0) {
+    FILE *inputFile = fopen(argv[argc - MIN_ARG + 1], "r");
+    if (strcmp(argv[argc - MIN_ARG + 1], "-") == 0) {
         readFile(stdin);
     }
     else {
         if (inputFile == NULL) {
-            fprintf(stderr, "Can't open file: %s\n", argv[argc - 2]);
+            fprintf(stderr, "Can't open file: %s\n", argv[argc - MIN_ARG + 1]);
             exit(1);
         }
         readFile(inputFile);
     }
     fclose(inputFile);
-    for (int i = 1; i < argc - 2; i++) {
+    for (int i = 1; i < argc - MIN_ARG + 1; i++) {
         if (strcmp("line", argv[i]) == 0) {
             int line = atoi(argv[++i]);
             if (line <= 0 || line > lines) {
@@ -119,6 +119,5 @@ int main(int argc, char *argv[]) {
         writeFile(outputFile);
     }
     fclose(outputFile);
-    free(input);
     return 0;
 }

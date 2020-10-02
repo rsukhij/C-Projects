@@ -6,7 +6,7 @@
 void removeLines( int start, int end );
 
 /**
- * Edits a single line of the global array by cutting out a portion of 
+ * Edits a single line of the global array by cutting out a portion of
  * its contents
  * @param lno the index of the line
  * @param start the starting column to remove

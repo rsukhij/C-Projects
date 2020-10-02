@@ -1,5 +1,5 @@
 /**
- * Program that adds functionality to 
+ * Program that adds functionality to
  * to edit the global array storing the
  * files contents
  * @author Rohan Sukhija

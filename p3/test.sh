@@ -159,20 +159,20 @@ if [ -x chop ] ; then
     checkResults 16 0 $STATUS
 
     rm -f output.txt stdout.txt stderr.txt
-    echo "Test 17: ./chop col1 1 line 1 input-e.txt output.txt > stdout.txt 2> stderr.txt"
-    ./chop col1 1 line 1 input-e.txt output.txt > stdout.txt 2> stderr.txt
+    echo "Test 17: ./chop cols 1 line 1 input-e.txt output.txt > stdout.txt 2> stderr.txt"
+    ./chop cols 1 line 1 input-e.txt output.txt > stdout.txt 2> stderr.txt
     STATUS=$?
     checkResults 17 1 $STATUS
 
     rm -f output.txt stdout.txt stderr.txt
-    echo "Test 18: ./chop col1 1 line 1 input-f.txt output.txt > stdout.txt 2> stderr.txt"
-    ./chop col1 1 line 1 input-f.txt output.txt > stdout.txt 2> stderr.txt
+    echo "Test 18: ./chop cols 1 line 1 input-f.txt output.txt > stdout.txt 2> stderr.txt"
+    ./chop cols 1 line 1 input-f.txt output.txt > stdout.txt 2> stderr.txt
     STATUS=$?
     checkResults 18 1 $STATUS
     
     rm -f output.txt stdout.txt stderr.txt
-    echo "Test 19: ./chop col1 1 line 1 not-a-file.txt output.txt > stdout.txt 2> stderr.txt"
-    ./chop col1 1 line 1 not-a-file.txt output.txt > stdout.txt 2> stderr.txt
+    echo "Test 19: ./chop cols 1 line 1 not-a-file.txt output.txt > stdout.txt 2> stderr.txt"
+    ./chop cols 1 line 1 not-a-file.txt output.txt > stdout.txt 2> stderr.txt
     STATUS=$?
     checkResults 19 1 $STATUS
     

@@ -1,6 +1,6 @@
 /**
- * Program that reads file contents into a 
- * 2d array and also outputs the contents of 
+ * Program that reads file contents into a
+ * 2d array and also outputs the contents of
  * a 2d array to a output file
  * @author Rohan Sukhija
  */
