@@ -1,3 +1,5 @@
 reading
-output.txt
 stderr.txt
+output.txt
+*.o
+

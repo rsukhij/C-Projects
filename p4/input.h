@@ -9,8 +9,4 @@
 * @return the string in dynamically allocated memory
 * or NULL if the end of file
 */
-char *readLine( FILE *fp );
-
-
-
-
+char *readLine(FILE *fp);
