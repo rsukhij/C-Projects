@@ -1,3 +1,6 @@
+#include <stdbool.h>
+#include <string.h>
+#include <stdlib.h>
 /**
 *Struct representing the 
 *record of a book
@@ -6,9 +9,9 @@ typedef struct Book {
     /** The id of the book */ 
     int id; 
     /** The title of the book */
-    char title[39];
+    char title[40];
     /** the author of the book */
-    char author[21]; 
+    char author[22]; 
     /** the reading level of the book */
     double level; 
     /** the word count of the book */
