@@ -1,6 +1,7 @@
 #include "catalog.h"
 #include "input.h"
 
+
 /** The reading list array containing ids of books in reading list */
 static int *list;
 /** The current adding position of the reading list */
@@ -9,7 +10,7 @@ static int position = 0;
 static int size = 0;
 
 /**
- * Adds book to reading list 
+ * Adds book to reading list
  * @param id the id of the book
  * @param cat the catalog
  * @return -2 if the book is already in the list
@@ -20,7 +21,7 @@ static int addToList(int id, Catalog *cat)
 {
     for (int i = 0; i < position; i++) {
         if (list[i] == id) {
-            return -2;
+            return ERROR_2;
         }
     }
     bool ok = false;
@@ -75,7 +76,7 @@ static bool existsInList(int id)
  * Finds the book in the catalog
  * @param id the id of the book
  * @param cat the catalog of books
- * @return the book in the catalog 
+ * @return the book in the catalog
  */
 static Book *findBook(int id, Catalog *cat)
 {
@@ -88,7 +89,7 @@ static Book *findBook(int id, Catalog *cat)
 }
 
 /**
- * Prints the list 
+ * Prints the list
  * @param cat the catalog
  */
 static void printList(Catalog *cat)
@@ -127,11 +128,11 @@ static void printList(Catalog *cat)
  * and executes reading program
  * @param argc the number of commandline arguments
  * @param argv the array of string containing commandline arguments
- * @return the exit code 
+ * @return the exit code
  */
 int main(int argc, char *argv[])
 {
-    if (argc < 2) {
+    if (argc <= 1) {
         fprintf(stderr, "usage: reading <book-list>*\n");
         exit(1);
     }
@@ -148,7 +149,7 @@ int main(int argc, char *argv[])
         readCatalog(c, argv[i]);
         fclose(fp);
     }
-    list = calloc(c->count * 10, sizeof(int));
+    list = calloc(c->count * ARRAY_MAG, sizeof(int));
     while (true) {
         printf("cmd> ");
 
@@ -160,8 +161,8 @@ int main(int argc, char *argv[])
         }
 
         printf("%s\n", str);
-        char command[10] = {'\0'};
-        char temp[100] = {'\0'};
+        char command[ARRAY_MAG] = {'\0'};
+        char temp[ARRAY_MAG * ARRAY_MAG] = {'\0'};
         double min;
         double max;
         int id;
@@ -188,7 +189,7 @@ int main(int argc, char *argv[])
                 printf("Invalid command\n");
             }
         }
-        else if (sscanf(str, "%s%lf%lf%s", command, &min, &max, temp) == 3) {
+        else if (sscanf(str, "%s%lf%lf%s", command, &min, &max, temp) == 1 + 1 + 1) {
             if (strcmp(command, "level") == 0) {
                 listLevel(c, min, max);
             }
@@ -196,13 +197,13 @@ int main(int argc, char *argv[])
                 printf("Invalid command\n");
             }
         }
-        else if (sscanf(str, "%s%d%s", command, &id, temp) == 2) {
+        else if (sscanf(str, "%s%d%s", command, &id, temp) == 1 + 1) {
             if (strcmp(command, "add") == 0) {
                 int status = addToList(id, c);
                 if (status == -1) {
                     printf("Book %d is not in the catalog\n", id);
                 }
-                else if (status == -2) {
+                else if (status == ERROR_2) {
                     printf("Book %d is already on the reading list\n", id);
                 }
             }

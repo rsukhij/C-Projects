@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
-* Reads a single line of input from a file and 
+* Reads a single line of input from a file and
 * return it as a string inside a block of dynamically
 * allocated memory
 * @param fp the file pointer to the file being read

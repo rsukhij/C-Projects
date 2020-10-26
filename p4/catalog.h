@@ -1,8 +1,27 @@
 #include <stdbool.h>
 #include <string.h>
 #include <stdlib.h>
+
+/** The error code for nonexistent entries */
+#define ERROR_2 -2
+
+/** The magnitude the array size is multiplied to hold the list */
+#define ARRAY_MAG 10
+
+/** The length of the char title array */
+#define TITLE_LENGTH 40
+
+/** The length of the char author array */
+#define AUTHOR_LENGTH 22
+
+/** The initial capacity of the catalog */
+#define INIT_CAP 5
+
+/** The multiplier for growing the books array */
+#define GROW_MAG 2
+
 /**
-*Struct representing the 
+*Struct representing the
 *record of a book
 */
 typedef struct Book
@@ -34,7 +53,7 @@ typedef struct Catalog
 
 /**
 *Dynamically allocates storage for the catalog, intializes its
-* fields and returns a pointer to it. 
+* fields and returns a pointer to it.
 *@return the pointer to the catalog intialized
 */
 Catalog *makeCatalog();
@@ -46,9 +65,9 @@ Catalog *makeCatalog();
 void freeCatalog(Catalog *cat);
 
 /**
-* Reads all the books from a given file. Makes an instance of the 
-* Book struct for each book and stores a pointer to that book in the 
-* array field within the catalog. 
+* Reads all the books from a given file. Makes an instance of the
+* Book struct for each book and stores a pointer to that book in the
+* array field within the catalog.
 * @param cat the catalog being filled
 * @param filename the string name of the file
 */
@@ -62,7 +81,7 @@ void listAll(Catalog *cat);
 
 /**
 * Lists all the book within the reading level bounds given
-* @param cat the catalog being listed 
+* @param cat the catalog being listed
 * @param min the minimum(inclusive) reading level bound
 * @param max the maximum(inclusive) reading level bound
 */

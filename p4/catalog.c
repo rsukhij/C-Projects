@@ -6,14 +6,14 @@ int size;
 
 Catalog *makeCatalog()
 {
-    Catalog *new = malloc(sizeof(Catalog));
-    new->books = malloc(sizeof(Book *) * 5);
-    new->count = 0;
-    new->capacity = 5;
-    for (int i = 0; i < new->capacity; i++) {
-        (new->books)[i] = calloc(1, sizeof(Book));
+    Catalog *newC = malloc(sizeof(Catalog));
+    newC->books = malloc(sizeof(Book *) * INIT_CAP);
+    newC->count = 0;
+    newC->capacity = INIT_CAP;
+    for (int i = 0; i < newC->capacity; i++) {
+        (newC->books)[i] = calloc(1, sizeof(Book));
     }
-    return new;
+    return newC;
 }
 
 void freeCatalog(Catalog *cat)
@@ -53,9 +53,9 @@ static int cmpLevel(const void *a, const void *b)
     Book *book1 = *((Book **)a);
     Book *book2 = *((Book **)b);
     if ((book1->level - book2->level) != 0.0) {
-        return (book1->level - book2->level) * 100;
+        return (book1->level - book2->level) * ARRAY_MAG * ARRAY_MAG;
     }
-    return (book1->id - book2->id) * 100;
+    return (book1->id - book2->id) * ARRAY_MAG * ARRAY_MAG;
 }
 
 /**
@@ -88,9 +88,9 @@ void readCatalog(Catalog *cat, char const *filename)
     int i = cat->count;
     while ((str = readLine(fp)) != NULL) {
         if (cat->count == cat->capacity) {
-            cat->capacity = cat->capacity * 2;
+            cat->capacity = cat->capacity * GROW_MAG;
             cat->books = realloc(cat->books, sizeof(Book *) * cat->capacity);
-            for (int i = cat->capacity / 2; i < cat->capacity; i++) {
+            for (int i = cat->capacity / GROW_MAG; i < cat->capacity; i++) {
                 (cat->books)[i] = calloc(1, sizeof(Book));
             }
         }
@@ -125,7 +125,7 @@ void readCatalog(Catalog *cat, char const *filename)
 
         pos += posIncr;
         sum += sscanf(str + pos, "%d", &(book->wordCount));
-        if (sum != 6) {
+        if (sum != 1 + 1 + 1 + 1 + 1 + 1) {
             fprintf(stderr, "%s%s\n", "Invalid book list: ", filename);
             freeCatalog(cat);
             free(str);
@@ -154,7 +154,8 @@ static bool trueForAll(Book const *book, void const *data)
  * @param test the function pointer to the test function
  * @param data the arbitrary data sent to function
  */
-static void listCatalog(Catalog *cat, bool (*test)(Book const *book, void const *data), void const *data)
+static void listCatalog(Catalog *cat,
+     bool (*test)(Book const *book, void const *data), void const *data)
 {
     printf("   ID                                  Title               Author Level   Words\n");
     for (int i = 0; i < cat->count; i++) {
