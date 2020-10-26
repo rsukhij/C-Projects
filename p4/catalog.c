@@ -1,8 +1,19 @@
 #include "catalog.h"
 #include "input.h"
 
+/**
+ * File that implements functions to interact with a catalog of books.
+ * Defines Book and Catalog structs.
+ * @author Rohan Sukhija
+ *
+ */
+
+
+/** The list of id to be reported by the listLevel function */
 static int *list;
-int size;
+
+/** The size of the list */
+static int size;
 
 Catalog *makeCatalog()
 {

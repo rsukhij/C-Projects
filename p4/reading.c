@@ -1,6 +1,12 @@
 #include "catalog.h"
 #include "input.h"
 
+/**
+ * Program that allows user to load books from a file(s)
+ * to add and remove to a viewable reading list
+ * @author Rohan Sukhija
+ *
+ */
 
 /** The reading list array containing ids of books in reading list */
 static int *list;

@@ -1,6 +1,12 @@
 #include "catalog.h"
 #include "input.h"
 
+/**
+ * Implements function to convert a line in a file
+ * stream to a string
+ * @author Rohan Sukhija
+ */
+
 char *readLine(FILE *fp)
 {
     char a = fgetc(fp);
