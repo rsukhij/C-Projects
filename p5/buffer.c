@@ -45,5 +45,6 @@ Buffer *readFile(const char *filename)
     while (fread(&c, 1, 1, fp) == 1) {
         appendBuffer(b, c);
     }
+    fclose(fp);
     return b;
 }
