@@ -5,6 +5,13 @@
 
 #include "buffer.h"
 
+/**
+ * Component defining constants, a struct, 
+ * and declaring functions for working with the
+ * SHA1 algorithm.
+ * @author Rohan Sukhija
+ */
+
 /* Mechanism to conditionally expose static functions to other components.  For
    production, we can make make them static, but for testing we can disable
    the static keyword and expose functions to the test driver. */
@@ -38,15 +45,15 @@ typedef struct {
 /**
  * Intializes the fields of a SHA1State with the 5 constants in the SHA1 algorithm
  * @param state the pointer to the SHA1State
- */ 
-void initState( SHA1State *state );
+ */
+void initState(SHA1State *state);
 
 /**
  * Pads the given buffer, bringing its length to a multiple of 64 bytes
  * and adding byte values as described in the SHA1 algorithm
  * @param b the buffer to pad
  */
-void padBuffer( Buffer *b);
+void padBuffer(Buffer *b);
 
 /**
  * Performs 80 SHA1 iterations on the given block of bytes,
@@ -54,7 +61,7 @@ void padBuffer( Buffer *b);
  * @param data the block of bytes
  * @param state the given SHA1 state
  */
-void sha1Block( unsigned char data[ SHA1_BLOCK ], SHA1State *state );
+void sha1Block(unsigned char data[SHA1_BLOCK], SHA1State *state);
 
 /**
  * Used to create the digest. Trasnfer 20 bytes inthe h0, h1, h2, h3, h4
@@ -62,4 +69,4 @@ void sha1Block( unsigned char data[ SHA1_BLOCK ], SHA1State *state );
  *@param digest the digest value to add to
  * @param state the SHA1 state.
  */
-void sha1Encode( unsigned char digest[ SHA1_DIGEST ], SHA1State *state);
+void sha1Encode(unsigned char digest[SHA1_DIGEST], SHA1State *state);

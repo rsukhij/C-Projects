@@ -1,3 +1,9 @@
+/**
+ * Header component for declaring functionality 
+ * of the hmac-sha1 algorithm
+ * @author Rohan Sukhija
+ */
+
 
 /**
  * Performs the HMAS-SHA1. Takes the key as a string, a pointer to the 
@@ -6,4 +12,4 @@
  * @param b the input buffer 
  * @param digest the array that sotres the digest
  */
-void hmacSHA1( char *kstr, Buffer *b, unsigned char digest[ SHA1_DIGEST ]);
+void hmacSHA1(char *kstr, Buffer *b, unsigned char digest[SHA1_DIGEST]);
